@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Study Agent</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>Study Agent</h1>
+  <p>Carica appunti (PDF, DOCX, TXT, MD, immagini) fino a 1 GB. Ottieni spiegazioni, mappe mentali, quiz, capitoli e riscritture nel tuo stile.</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. Carica i tuoi appunti</h2>
+    <input type="file" id="files" multiple />
+    <button id="uploadBtn">Carica</button>
+    <div id="uploadInfo" class="info"></div>
+  </section>
+
+  <section class="card">
+    <h2>2. Azioni</h2>
+    <div class="btn-row">
+      <button data-action="explain">Spiegazione</button>
+      <button data-action="mindmap">Mappa mentale</button>
+      <button data-action="chapters">Capitoli</button>
+      <button data-action="quiz">Quiz</button>
+      <button data-action="quiz">Rigenera quiz</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Stile di scrittura</h2>
+    <p>Analizza lo stile degli appunti caricati e riscrivi un altro file in quel modo.</p>
+    <button id="analyzeStyleBtn">Analizza stile degli appunti correnti</button>
+    <div id="styleInfo" class="info"></div>
+    <hr />
+    <input type="file" id="targetFiles" multiple />
+    <button id="uploadTargetBtn">Carica testo da riscrivere</button>
+    <button id="rewriteBtn" disabled>Riscrivi nello stile</button>
+  </section>
+
+  <section class="card">
+    <h2>Output</h2>
+    <div class="btn-row">
+      <button id="exportPdfBtn">Esporta in PDF</button>
+    </div>
+    <div id="output" class="output"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

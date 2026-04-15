@@ -1,0 +1,26 @@
+{
+  "name": "study-agent",
+  "version": "1.0.0",
+  "description": "AI study agent: reads notes and produces explanations, mind maps, quizzes, chapters, and style-matched rewrites.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mammoth": "^1.8.0",
+    "marked": "^14.1.3",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "puppeteer": "^23.6.0",
+    "tesseract.js": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

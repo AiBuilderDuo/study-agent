@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<title>Study Agent — Login</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main style="max-width:380px;margin:6rem auto;">
+  <div class="card">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="password" id="password" placeholder="Password" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid #334155;background:#0b0e14;color:#e6e8eb;margin-bottom:.75rem;" />
+      <button type="submit" style="width:100%;">Entra</button>
+    </form>
+    <p id="err" style="color:#f87171;"></p>
+  </div>
+</main>
+<script>
+document.getElementById("loginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const password = document.getElementById("password").value;
+  const res = await fetch("/api/login", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ password }) });
+  if (res.ok) location.href = "/"; else document.getElementById("err").textContent = "Password errata";
+};
+</script>
+</body>
+</html>
