@@ -11,8 +11,8 @@ Requisiti:
 export async function mindmap(text) {
   return ask({
     system: SYSTEM,
-    user: `Materiale:\n\n${text.slice(0, 80000)}`,
-    maxTokens: 6000,
+    user: `Materiale:\n\n${text.slice(0, 40000)}`,
+    maxTokens: 3500,
     temperature: 0.3,
   });
 }

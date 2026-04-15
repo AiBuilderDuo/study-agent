@@ -11,7 +11,7 @@ export const client = new OpenAI({
   baseURL: "https://api.groq.com/openai/v1",
 });
 
-export const MODEL = process.env.LLM_MODEL || "llama-3.3-70b-versatile";
+export const MODEL = process.env.LLM_MODEL || "llama-3.1-8b-instant";
 
 export const SYSTEM_CORE = `Sei uno Study Agent esperto: preciso, argomentativo, intelligente, sicuro di te.
 Regole inviolabili:
@@ -22,7 +22,7 @@ Regole inviolabili:
 - Non inventare fatti non presenti nel testo; se un concetto e' implicito, segnalalo.
 - Struttura sempre l'output nel formato richiesto dall'istruzione.`;
 
-export async function ask({ system, user, maxTokens = 8000, temperature = 0.4 }) {
+export async function ask({ system, user, maxTokens = 4000, temperature = 0.4 }) {
   const res = await client.chat.completions.create({
     model: MODEL,
     temperature,
@@ -35,7 +35,7 @@ export async function ask({ system, user, maxTokens = 8000, temperature = 0.4 })
   return (res.choices?.[0]?.message?.content || "").trim();
 }
 
-export function chunkText(text, maxChars = 60000) {
+export function chunkText(text, maxChars = 40000) {
   const chunks = [];
   let i = 0;
   while (i < text.length) {

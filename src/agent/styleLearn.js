@@ -20,8 +20,8 @@ Regole:
 export async function analyzeStyle(referenceText) {
   const raw = await ask({
     system: ANALYZE_SYSTEM,
-    user: `Materiale di riferimento:\n\n${referenceText.slice(0, 80000)}`,
-    maxTokens: 4000,
+    user: `Materiale di riferimento:\n\n${referenceText.slice(0, 40000)}`,
+    maxTokens: 3000,
     temperature: 0.3,
   });
   const s = raw.indexOf("{");
@@ -36,8 +36,8 @@ export async function analyzeStyle(referenceText) {
 export async function rewriteInStyle(targetText, styleProfile) {
   return ask({
     system: REWRITE_SYSTEM,
-    user: `PROFILO STILISTICO DA IMITARE:\n${styleProfile}\n\nTESTO DA RISCRIVERE:\n${targetText.slice(0, 80000)}`,
-    maxTokens: 12000,
+    user: `PROFILO STILISTICO DA IMITARE:\n${styleProfile}\n\nTESTO DA RISCRIVERE:\n${targetText.slice(0, 35000)}`,
+    maxTokens: 4000,
     temperature: 0.6,
   });
 }

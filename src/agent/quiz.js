@@ -19,8 +19,8 @@ Requisiti:
 export async function quiz(text, seed = Date.now()) {
   const raw = await ask({
     system: SYSTEM,
-    user: `Seed di variazione: ${seed}. Genera un quiz DIVERSO dalle versioni precedenti usando questo seed.\n\nMateriale:\n\n${text.slice(0, 80000)}`,
-    maxTokens: 6000,
+    user: `Seed di variazione: ${seed}. Genera un quiz DIVERSO dalle versioni precedenti usando questo seed.\n\nMateriale:\n\n${text.slice(0, 40000)}`,
+    maxTokens: 4000,
     temperature: 0.8,
   });
   const jsonStart = raw.indexOf("{");

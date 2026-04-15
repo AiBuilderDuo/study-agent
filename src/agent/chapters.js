@@ -10,8 +10,8 @@ Requisiti:
 export async function chapters(text) {
   return ask({
     system: SYSTEM,
-    user: `Materiale:\n\n${text.slice(0, 100000)}`,
-    maxTokens: 8000,
+    user: `Materiale:\n\n${text.slice(0, 40000)}`,
+    maxTokens: 4000,
     temperature: 0.3,
   });
 }
