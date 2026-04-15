@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import multer from "multer";
 import path from "path";
 import fs from "fs/promises";
@@ -20,6 +21,16 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: [
+    "https://agent-portal-home.lovable.app",
+    /\.lovable\.app$/,
+    /\.lovableproject\.com$/,
+    /^http:\/\/localhost(:\d+)?$/
+  ],
+  credentials: true
+}));
 
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 await fs.mkdir(UPLOAD_DIR, { recursive: true });
