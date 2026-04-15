@@ -2,13 +2,16 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 
-if (!process.env.OPENAI_API_KEY) {
-  console.warn("[WARN] OPENAI_API_KEY non impostata. Configura .env prima di eseguire.");
+if (!process.env.GROQ_API_KEY) {
+  console.warn("[WARN] GROQ_API_KEY non impostata. Configura .env prima di eseguire.");
 }
 
-export const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+export const client = new OpenAI({
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
+});
 
-export const MODEL = process.env.LLM_MODEL || "gpt-4o-mini";
+export const MODEL = process.env.LLM_MODEL || "llama-3.3-70b-versatile";
 
 export const SYSTEM_CORE = `Sei uno Study Agent esperto: preciso, argomentativo, intelligente, sicuro di te.
 Regole inviolabili:

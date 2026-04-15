@@ -160,7 +160,7 @@ app.post("/api/export/pdf", async (req, res) => {
   } catch (e) { res.status(500).json({ error: String(e) }); }
 });
 
-app.get("/api/health", (req, res) => res.json({ ok: true, model: process.env.LLM_MODEL || "gpt-4o-mini" }));
+app.get("/api/health", (req, res) => res.json({ ok: true, provider: "groq", model: process.env.LLM_MODEL || "llama-3.3-70b-versatile" }));
 
 app.listen(PORT, () => {
   console.log(`Study Agent in ascolto su http://localhost:${PORT}`);

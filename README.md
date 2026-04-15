@@ -20,7 +20,7 @@ Tono dell'agent: preciso, argomentativo, intelligente, sicuro di se', non omette
 
 - Node.js >= 18
 - Express + Multer (upload)
-- OpenAI API (`openai`) con modello `gpt-4o-mini`
+- Groq API (SDK `openai` puntato a `api.groq.com`) con `llama-3.3-70b-versatile` + `whisper-large-v3` (tier free)
 - `pdf-parse`, `mammoth`, `tesseract.js`
 
 ## Setup
@@ -30,7 +30,7 @@ git clone <repo-url>
 cd study-agent
 npm install
 cp .env.example .env
-# inserisci la tua OPENAI_API_KEY nel file .env
+# inserisci la tua GROQ_API_KEY nel file .env
 npm start
 ```
 
@@ -40,8 +40,8 @@ Apri `http://localhost:3000`.
 
 | Variabile | Descrizione |
 |-----------|-------------|
-| `OPENAI_API_KEY` | Chiave API OpenAI (obbligatoria — usata per LLM e per trascrizione audio Whisper) |
-| `LLM_MODEL` | Modello OpenAI (default `gpt-4o-mini`) |
+| `GROQ_API_KEY` | Chiave API Groq (obbligatoria — usata per LLM e per trascrizione audio Whisper) |
+| `LLM_MODEL` | Modello Groq (default `llama-3.3-70b-versatile`) |
 | `APP_PASSWORD` | Se impostata, abilita login con password |
 | `PORT` | Porta server (default 3000) |
 
