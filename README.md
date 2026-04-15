@@ -20,7 +20,7 @@ Tono dell'agent: preciso, argomentativo, intelligente, sicuro di se', non omette
 
 - Node.js >= 18
 - Express + Multer (upload)
-- Anthropic Claude API (`@anthropic-ai/sdk`)
+- OpenAI API (`openai`) con modello `gpt-4o-mini`
 - `pdf-parse`, `mammoth`, `tesseract.js`
 
 ## Setup
@@ -30,7 +30,7 @@ git clone <repo-url>
 cd study-agent
 npm install
 cp .env.example .env
-# inserisci la tua ANTHROPIC_API_KEY nel file .env
+# inserisci la tua OPENAI_API_KEY nel file .env
 npm start
 ```
 
@@ -40,9 +40,8 @@ Apri `http://localhost:3000`.
 
 | Variabile | Descrizione |
 |-----------|-------------|
-| `ANTHROPIC_API_KEY` | Chiave API Anthropic (obbligatoria) |
-| `CLAUDE_MODEL` | Modello Claude (default `claude-sonnet-4-5`) |
-| `OPENAI_API_KEY` | Chiave OpenAI (per trascrizione audio con Whisper) |
+| `OPENAI_API_KEY` | Chiave API OpenAI (obbligatoria — usata per LLM e per trascrizione audio Whisper) |
+| `LLM_MODEL` | Modello OpenAI (default `gpt-4o-mini`) |
 | `APP_PASSWORD` | Se impostata, abilita login con password |
 | `PORT` | Porta server (default 3000) |
 

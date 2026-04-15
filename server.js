@@ -149,7 +149,7 @@ app.post("/api/export/pdf", async (req, res) => {
   } catch (e) { res.status(500).json({ error: String(e) }); }
 });
 
-app.get("/api/health", (req, res) => res.json({ ok: true, model: process.env.CLAUDE_MODEL || "claude-sonnet-4-5" }));
+app.get("/api/health", (req, res) => res.json({ ok: true, model: process.env.LLM_MODEL || "gpt-4o-mini" }));
 
 app.listen(PORT, () => {
   console.log(`Study Agent in ascolto su http://localhost:${PORT}`);

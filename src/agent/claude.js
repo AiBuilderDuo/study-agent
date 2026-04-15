@@ -1,14 +1,14 @@
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.warn("[WARN] ANTHROPIC_API_KEY non impostata. Configura .env prima di eseguire.");
+if (!process.env.OPENAI_API_KEY) {
+  console.warn("[WARN] OPENAI_API_KEY non impostata. Configura .env prima di eseguire.");
 }
 
-export const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+export const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-export const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-5";
+export const MODEL = process.env.LLM_MODEL || "gpt-4o-mini";
 
 export const SYSTEM_CORE = `Sei uno Study Agent esperto: preciso, argomentativo, intelligente, sicuro di te.
 Regole inviolabili:
@@ -20,14 +20,16 @@ Regole inviolabili:
 - Struttura sempre l'output nel formato richiesto dall'istruzione.`;
 
 export async function ask({ system, user, maxTokens = 8000, temperature = 0.4 }) {
-  const res = await client.messages.create({
+  const res = await client.chat.completions.create({
     model: MODEL,
-    max_tokens: maxTokens,
     temperature,
-    system: `${SYSTEM_CORE}\n\n${system || ""}`.trim(),
-    messages: [{ role: "user", content: user }],
+    max_tokens: maxTokens,
+    messages: [
+      { role: "system", content: `${SYSTEM_CORE}\n\n${system || ""}`.trim() },
+      { role: "user", content: user },
+    ],
   });
-  return res.content.map((b) => (b.type === "text" ? b.text : "")).join("\n").trim();
+  return (res.choices?.[0]?.message?.content || "").trim();
 }
 
 export function chunkText(text, maxChars = 60000) {
