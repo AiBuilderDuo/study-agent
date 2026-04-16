@@ -2,16 +2,16 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 
-if (!process.env.GROQ_API_KEY) {
-  console.warn("[WARN] GROQ_API_KEY non impostata. Configura .env prima di eseguire.");
+if (!process.env.MISTRAL_API_KEY) {
+  console.warn("[WARN] MISTRAL_API_KEY non impostata. Configura .env prima di eseguire.");
 }
 
 export const client = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1",
+  apiKey: process.env.MISTRAL_API_KEY,
+  baseURL: "https://api.mistral.ai/v1",
 });
 
-export const MODEL = process.env.LLM_MODEL || "llama-3.1-8b-instant";
+export const MODEL = process.env.LLM_MODEL || "mistral-small-latest";
 
 export const SYSTEM_CORE = `Sei uno Study Agent esperto: preciso, argomentativo, intelligente, sicuro di te.
 Regole inviolabili:
